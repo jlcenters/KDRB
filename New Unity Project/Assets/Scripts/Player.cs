@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : Fighter
 {
-
     public int sp;
     public KeyCode atkKey;
     private Vector2 face;
