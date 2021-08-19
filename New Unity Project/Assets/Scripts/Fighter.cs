@@ -8,6 +8,7 @@ public class Fighter : MonoBehaviour
     public int speed;
     public int atk;
     public Rigidbody2D rig;
+    public Animator anim;
 
     public void Attack(int dmg)
     {
@@ -18,4 +19,9 @@ public class Fighter : MonoBehaviour
     {
         hp -= dmg;
     }
+
+   /* public void Walk(float xAxis)
+    {
+        anim.SetFloat("speed", Mathf.Abs(xAxis != 0 ? xAxis : 0f));
+    }*/
 }

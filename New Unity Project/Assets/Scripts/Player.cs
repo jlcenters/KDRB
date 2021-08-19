@@ -9,15 +9,11 @@ public class Player : Fighter
     private Vector2 face;
     public float atkRange;
 
-    /*TODO:
-     * hit a key to attack (idk which yet)
-     * hit a key to jump
-     * hit a key for sp atk
-    */
 
     private void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -38,10 +34,11 @@ public class Player : Fighter
 
         //if player's velocity is changing, in other words moving,
         //update face in direction of movement
-            face = vel;
+        face = vel;
 
         rig.velocity = new Vector2(x * speed, rig.velocity.y);
 
+        anim.SetFloat("speed", Mathf.Abs(x != 0 ? x : 0f));
     }
 
     public void Jump()
