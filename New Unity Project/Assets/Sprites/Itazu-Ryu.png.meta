@@ -301,27 +301,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: run0
-      rect:
-        serializedVersion: 2
-        x: 397
-        y: 908
-        width: 46
-        height: 98
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa58b667131fd97f0800000000000000
-      internalID: -604061580255328854
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: run1
       rect:
         serializedVersion: 2
@@ -443,69 +422,6 @@ TextureImporter:
       bones: []
       spriteID: 610ebc282f42d1150800000000000000
       internalID: 5844868515391856662
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump0
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 749
-        width: 46
-        height: 98
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ce5d3e56e63967940800000000000000
-      internalID: 5293580514385712620
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump1
-      rect:
-        serializedVersion: 2
-        x: 79
-        y: 747
-        width: 46
-        height: 98
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b20a378ec283d380800000000000000
-      internalID: -8947664211111443790
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump2
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 748
-        width: 46
-        height: 98
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bf8988e1fefe59260800000000000000
-      internalID: 7103847797535316219
       vertices: []
       indices: 
       edges: []
@@ -658,27 +574,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: punch0
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 559
-        width: 48
-        height: 98
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bdebaa34b2ce235a0800000000000000
-      internalID: -6542907638052897061
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: punch1
       rect:
         serializedVersion: 2
@@ -737,27 +632,6 @@ TextureImporter:
       bones: []
       spriteID: 964b0ee80f6734840800000000000000
       internalID: 5207136369731744873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block0
-      rect:
-        serializedVersion: 2
-        x: 368
-        y: 557
-        width: 46
-        height: 98
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eea5428cc5a095510800000000000000
-      internalID: 1538272141334829806
       vertices: []
       indices: 
       edges: []

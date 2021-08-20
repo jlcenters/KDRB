@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class Enemy : Fighter
 {
+    public Player player;
+    public float chaseRange;
+    public float atkRange;
 
-
-    /*TODO:
-     * 
-     */
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        player = FindObjectOfType<Player>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        Chase();
+    }
+
+    public void Chase()
+    {
+        rb.velocity = (player.transform.position - transform.position).normalized * speed;
+
     }
 }
