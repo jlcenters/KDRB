@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class Player : Fighter
 {
+    [Header("Player Stats")]
     public int sp;
     public KeyCode atkKey;
     public KeyCode jumpKey;
     public KeyCode blockKey;
-    private Vector2 face;
-    public float atkRange;
-    public float x;
     public float jumpForce;
     public bool isStopped;
 
-    [Header("If scale is updated, make changes here")]
-    public float scaleUp;
+    
 
     private void Awake()
     {
@@ -30,7 +27,7 @@ public class Player : Fighter
         x = Input.GetAxis("Horizontal");
 
         Jump();
-        Attack();
+        Punch();
         Block();
     }
 
@@ -41,23 +38,6 @@ public class Player : Fighter
         Walk();
     }
 
-    private void Flip(float x)
-    {
-        Vector3 scale = transform.localScale;
-
-        //inverts x axis based on scale of sprite
-        if(x < 0)
-        {
-            scale.x = -scaleUp;
-        }
-        else if(x > 0)
-        {
-            scale.x = scaleUp;
-        }
-
-        transform.localScale = scale;
-    }
-
     public void Walk()
     {
         if (!isStopped)
@@ -65,10 +45,7 @@ public class Player : Fighter
             //move horizontally based on speed and real time
             transform.Translate(x * speed * Time.deltaTime, 0f, 0f);
 
-            //if player's velocity is changing, in other words moving,
-            //update face in direction of movement
-            Vector2 vel = new Vector2(x, rb.velocity.y);
-            face = vel;
+            ChangeFace();
 
             //set speed in animator using absolute value of x
             anim.SetFloat("speed", Mathf.Abs(x));
@@ -90,19 +67,12 @@ public class Player : Fighter
         }
     }
 
-    public void Attack()
+    public void Punch()
     {
-        // WHEN ATTACKING FREEZE POSITION
         if (Input.GetKeyDown(atkKey))
         {
             isStopped = true;
-            anim.SetBool("isPunching", true);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, face, atkRange, 1 << 8);
-            if (hit.collider != null)
-            {
-                hit.collider.GetComponent<Enemy>().TakeDmg(atk);
-                Debug.Log("enemy: Ouch!");
-            }
+            MeleeAttack(8, dmg);
         }
         if (Input.GetKeyUp(atkKey))
         {

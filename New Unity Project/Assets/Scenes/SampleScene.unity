@@ -132,12 +132,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 222519877}
+  - component: {fileID: 222519881}
   - component: {fileID: 222519876}
   - component: {fileID: 222519878}
   - component: {fileID: 222519879}
   - component: {fileID: 222519880}
-  - component: {fileID: 222519881}
-  m_Layer: 0
+  - component: {fileID: 222519882}
+  m_Layer: 8
   m_Name: Blue Grunt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,8 +204,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222519875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.71, y: 0.51, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -7.81, y: 0.49, z: 0}
+  m_LocalScale: {x: 2.25, y: 2.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -248,7 +249,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!68 &222519880
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -283,16 +284,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29969c84eb07e5f44ba6bbb07d34d3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  speed: 2
-  atk: 0
+  hp: 10
+  speed: 3
+  dmg: 1
   rb: {fileID: 0}
   anim: {fileID: 0}
   isGrounded: 0
   isBlocking: 0
+  x: 0
+  face: {x: 0, y: 0}
+  atkRange: 1.75
+  atkRate: 3
+  lastAtk: 0
+  scaleUp: 2.25
   player: {fileID: 0}
-  chaseRange: 4
-  atkRange: 0
+  chaseRange: 6
+  playerDist: 0
+--- !u!61 &222519882
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222519875}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.58, y: 0.88}
+    newSize: {x: 0.58, y: 0.88}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.58, y: 0.88}
+  m_EdgeRadius: 0
 --- !u!1 &339057037
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,12 +335,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 339057039}
+  - component: {fileID: 339057042}
   - component: {fileID: 339057038}
   - component: {fileID: 339057040}
-  - component: {fileID: 339057042}
   - component: {fileID: 339057041}
   - component: {fileID: 339057043}
-  m_Layer: 0
+  - component: {fileID: 339057044}
+  m_Layer: 7
   m_Name: Itazu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339057037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.39, y: 0.5, z: 0}
+  m_LocalPosition: {x: 4.12, y: 0.73, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -431,22 +465,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e7b109ca984fb4d8055d621c25dea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  speed: 5
-  atk: 0
+  hp: 10
+  speed: 6
+  dmg: 1
   rb: {fileID: 0}
   anim: {fileID: 0}
   isGrounded: 0
   isBlocking: 0
+  x: 0
+  face: {x: 0, y: 0}
+  atkRange: 10
+  atkRate: 0
+  lastAtk: 0
+  scaleUp: 2
   sp: 0
   atkKey: 120
   jumpKey: 32
   blockKey: 8
-  atkRange: 0
-  x: 0
   jumpForce: 5
   isStopped: 0
-  scaleUp: 2
 --- !u!61 &339057043
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -457,7 +494,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -473,6 +510,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.46, y: 0.98}
   m_EdgeRadius: 0
+--- !u!68 &339057044
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339057037}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.49}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.23, y: 0}
+  - {x: 0.23, y: 0}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,8 +714,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932567744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.798, y: -1.3, z: 0}
-  m_LocalScale: {x: 14.540888, y: 1, z: 1}
+  m_LocalPosition: {x: 2.0449, y: -1.3, z: 0}
+  m_LocalScale: {x: 96.03488, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
