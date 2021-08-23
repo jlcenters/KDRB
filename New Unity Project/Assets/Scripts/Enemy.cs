@@ -25,15 +25,15 @@ public class Enemy : Fighter
 
         if(playerDist <= atkRange)
         {
-            if (Time.time -lastAtk >= atkRate)
+            if (Time.time - lastAtk >= atkRate)
             {
                 MeleeAttack(7, dmg);
                 lastAtk = Time.time;
             }
-            else
+            /*else
             {
                 StopPunching();
-            }
+            }*/
             StopMoving();
         }
         else if(playerDist <= chaseRange)
