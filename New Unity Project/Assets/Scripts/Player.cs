@@ -76,7 +76,7 @@ public class Player : Fighter
         }
         if (Input.GetKeyUp(atkKey))
         {
-            anim.SetBool("isPunching", false);
+            anim.SetBool("isMelee", false);
             isStopped = false;
         }
 

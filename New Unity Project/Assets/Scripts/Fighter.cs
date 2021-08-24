@@ -18,13 +18,15 @@ public class Fighter : MonoBehaviour
     public float atkRange;
     public float atkRate;
     public float lastAtk;
+    //public GameObject projectile;
+    //public Transform shotPoint;
 
     [Header("If scale is updated, make changes here")]
     public float scaleUp;
 
     public void MeleeAttack(int targetLayer, int dmg)
     {
-        anim.SetBool("isPunching", true);
+        anim.SetBool("isMelee", true);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, face, atkRange, 1 << targetLayer);
         if (hit.collider != null)
         {
@@ -39,6 +41,19 @@ public class Fighter : MonoBehaviour
 
         } 
     }
+
+    public void StopMelee()
+    {
+        anim.SetBool("isMelee", false);
+    }
+
+    /*public void RangedAttack()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(projectile, shotPoint.position, shotPoint.rotation);
+        }
+    }*/
 
     public void TakeDmg(int dmg)
     {

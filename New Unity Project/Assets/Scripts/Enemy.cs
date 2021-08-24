@@ -38,15 +38,16 @@ public class Enemy : Fighter
         }
         else if(playerDist <= chaseRange)
         {
-            StopPunching();
+            StopMelee();
             anim.SetFloat("speed", Mathf.Abs(x));
             Chase();
             ChangeFace();
         }
         else
         {
-            StopPunching();
+            StopMelee();
             StopMoving();
+            //RangedAttack();
         }
     }
 
@@ -59,10 +60,5 @@ public class Enemy : Fighter
     {
         anim.SetFloat("speed", 0);
         rb.velocity = Vector2.zero;
-    }
-
-    public void StopPunching()
-    {
-        anim.SetBool("isPunching", false);
     }
 }
