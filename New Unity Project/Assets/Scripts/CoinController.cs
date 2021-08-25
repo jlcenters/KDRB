@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   /* public int value;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
-    }
+        Debug.Log("collide");
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<Player>().GetPaid(value);
+            Debug.Log("get component");
+            Destroy(gameObject);
+            Debug.Log("destroy");
+        }
+    }*/
 }

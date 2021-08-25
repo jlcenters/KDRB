@@ -11,7 +11,7 @@ public class Player : Fighter
     public KeyCode blockKey;
     public float jumpForce;
     public bool isStopped;
-
+    public int wallet;
     
 
     private void Awake()
@@ -105,6 +105,11 @@ public class Player : Fighter
             isGrounded = true;
             anim.SetBool("isJumping", false);
         }
+    }
+
+    public void GetPaid(int value)
+    {
+        wallet += value;
     }
 
 }
