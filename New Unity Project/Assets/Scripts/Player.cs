@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Fighter
 {
@@ -12,12 +13,20 @@ public class Player : Fighter
     public float jumpForce;
     public bool isStopped;
     public int wallet;
-    
+    public int walkSpeed;
+    public int runSpeed;
+    public bool isRunning;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        ui = FindObjectOfType<UI>();
+    }
+
+    private void Start()
+    {
+        ui.AdjustHP();
     }
 
     //handles input for physics
@@ -25,8 +34,11 @@ public class Player : Fighter
     {
         //store user input into x
         x = Input.GetAxis("Horizontal");
-
-        Jump();
+        if (!isStopped)
+        {
+            Jump();
+            Move();
+        }
         Punch();
         Block();
     }
@@ -35,41 +47,60 @@ public class Player : Fighter
     private void FixedUpdate()
     {
         Flip(x);
-        Walk();
     }
 
-    public void Walk()
+    public void Move()
     {
-        if (!isStopped)
+        if(x != 0)
         {
-            //move horizontally based on speed and real time
-            transform.Translate(x * speed * Time.deltaTime, 0f, 0f);
-
-            ChangeFace();
-
-            //set speed in animator using absolute value of x
-            anim.SetFloat("speed", Mathf.Abs(x));
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                isRunning = true;
+                anim.SetBool("isRunning", true);
+                speed = runSpeed;
+            }
+            else
+            {
+                isRunning = false;
+                speed = walkSpeed;
+            }
         }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        {
+            isRunning = false;
+            anim.SetBool("isRunning", false);
+        }
+
+        //move horizontally based on speed and real time
+        transform.Translate(x * speed * Time.deltaTime, 0f, 0f);
+        ChangeFace();
+
+        //set speed in animator using absolute value of x
+        anim.SetFloat("speed", Mathf.Abs(x));
+    }
+
+    public void Run()
+    {
+
+        transform.Translate(x * runSpeed * Time.deltaTime, 0f, 0f);
     }
 
     public void Jump()
     {
-        if (!isStopped)
+        //isGrounded = Physics2D.OverlapCircle(point.position, box, ground);
+        if (Input.GetKeyDown(jumpKey) && isGrounded)
         {
-            //isGrounded = Physics2D.OverlapCircle(point.position, box, ground);
-            if (Input.GetKeyDown(jumpKey) && isGrounded)
-            {
-                anim.SetTrigger("jump");
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-                anim.SetBool("isJumping", true);
-                isGrounded = false;
-            }
+            anim.SetTrigger("jump");
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            anim.SetBool("isJumping", true);
+            isGrounded = false;
         }
     }
 
     public void Punch()
     {
-        if (Input.GetKeyDown(atkKey))
+        if (Input.GetKeyDown(atkKey) && Time.time - lastAtk >= atkRate)
         {
             isStopped = true;
             MeleeAttack(8, dmg);
@@ -111,5 +142,6 @@ public class Player : Fighter
     {
         wallet += value;
     }
+
 
 }

@@ -9,8 +9,12 @@ public class UI : MonoBehaviour
 
     public Image hpFill;
     public Image spFill;
+    public Player player;
 
-
+    private void Awake()
+    {
+        player = FindObjectOfType<Player>();
+    }
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -31,5 +35,10 @@ public class UI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AdjustHP()
+    {
+        hpFill.fillAmount = (float)player.hp / (float)player.maxHp;
     }
 }

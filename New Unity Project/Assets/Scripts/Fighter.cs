@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fighter : MonoBehaviour
 {
     [Header("Character Stats")]
     public int hp;
+    public int maxHp;
     public int speed;
     public int dmg;
     public Rigidbody2D rb;
@@ -20,6 +22,8 @@ public class Fighter : MonoBehaviour
     public float lastAtk;
     //public GameObject projectile;
     //public Transform shotPoint;
+    public SpriteRenderer sprite;
+    public UI ui;
 
     [Header("If scale is updated, make changes here")]
     public float scaleUp;
@@ -38,8 +42,8 @@ public class Fighter : MonoBehaviour
             {
                 hit.collider.GetComponent<Enemy>().TakeDmg(dmg);
             }
-
-        } 
+            lastAtk = Time.time;
+        }
     }
 
     public void StopMelee()
@@ -58,6 +62,14 @@ public class Fighter : MonoBehaviour
     public void TakeDmg(int dmg)
     {
         hp -= dmg;
+        if(ui != null)
+        {
+            ui.AdjustHP();
+        }
+        if(hp <= 0)
+        {
+            Die();
+        }
     }
 
     public void Flip(float x)
@@ -85,6 +97,18 @@ public class Fighter : MonoBehaviour
         if (vel.magnitude != 0)
         {
             face = vel;
+        }
+    }
+
+    public void Die()
+    {
+        if(sprite != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
