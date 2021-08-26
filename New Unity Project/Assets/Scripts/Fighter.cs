@@ -28,6 +28,11 @@ public class Fighter : MonoBehaviour
     [Header("If scale is updated, make changes here")]
     public float scaleUp;
 
+    public void Miss()
+    {
+        lastAtk = Time.time;
+    }
+
     public void MeleeAttack(int targetLayer, int dmg)
     {
         anim.SetBool("isMelee", true);

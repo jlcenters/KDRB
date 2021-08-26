@@ -14,6 +14,11 @@ public class Enemy : Fighter
     public int heavyDmg;
     public bool isRed;
     public Sprite hpBar;
+    public int blueDie;
+    public int blueWin;
+    public int tanDie;
+    public int tanWin;
+    public bool firstAtk;
 
     private void Awake()
     {
@@ -21,6 +26,7 @@ public class Enemy : Fighter
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        firstAtk = true;
     }
 
     private void Update()
@@ -33,24 +39,59 @@ public class Enemy : Fighter
 
         if(playerDist <= atkRange)
         {
+            /*if (firstAtk)
+            {
+                lastAtk = Time.time;
+                firstAtk = false;
+            }*/
+
+
             if (Time.time - lastAtk >= atkRate)
             {
+                int die;
+
                 if (!isTan)
                 {
-                    MeleeAttack(7, dmg);
+
+                        //roll and debug
+                        die = Roll(blueDie);
+                        Debug.Log(die);
+                        //if the roll is a success, debug and atk
+                        if (die >= blueWin)
+                        {
+                            Debug.Log("attack!");
+                            MeleeAttack(7, dmg);
+                        }
+                        else
+                        {
+                            Debug.Log("Miss!");
+                            Miss();
+                        }
                 }
                 if (isTan){
-                    IncrementAtk();
-                    if (atkCount < numToHeavy)
+                   //roll and debug
+                    die = Roll(tanDie);
+                    Debug.Log(die);
+                    //if roll is a success, debug and atk
+                    if (die >= tanWin)
                     {
-                        MeleeAttack(7, dmg);
+                        Debug.Log("attack!");
+                        IncrementAtk();
+                        if (atkCount < numToHeavy)
+                        {
+                            MeleeAttack(7, dmg);
+                        }
+                        else
+                        {
+                            anim.SetBool("isMelee", true);
+                        }
                     }
                     else
                     {
-                        anim.SetBool("isMelee", true);
+                        Debug.Log("Miss!");
+                        Miss();
                     }
                 }
-
             }
             StopMoving();
         }
@@ -91,5 +132,10 @@ public class Enemy : Fighter
         MeleeAttack(7, heavyDmg);
         atkCount = 0;
         anim.SetBool("isMelee", false);
+    }
+
+    public int Roll(int sides)
+    {
+        return Random.Range(1,sides + 1);
     }
 }

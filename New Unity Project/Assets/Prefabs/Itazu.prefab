@@ -51,15 +51,15 @@ MonoBehaviour:
   hp: 10
   maxHp: 10
   speed: 0
-  dmg: 1
+  dmg: 3
   rb: {fileID: 0}
   anim: {fileID: 0}
   isGrounded: 0
   isBlocking: 0
   x: 0
   face: {x: 0, y: 0}
-  atkRange: 10
-  atkRate: 0
+  atkRange: 2
+  atkRate: 0.5
   lastAtk: 0
   sprite: {fileID: 0}
   ui: {fileID: 0}
