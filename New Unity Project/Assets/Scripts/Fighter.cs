@@ -108,7 +108,12 @@ public class Fighter : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("GameOver");
+            anim.SetBool("isKO", true);
         }
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }

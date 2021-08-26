@@ -142,6 +142,4 @@ public class Player : Fighter
     {
         wallet += value;
     }
-
-
 }
