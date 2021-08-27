@@ -26,7 +26,13 @@ public class Enemy : Fighter
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        ui = FindObjectOfType<UI>();
         firstAtk = true;
+    }
+
+    private void Start()
+    {
+        ui.amountToDefeat += 1;
     }
 
     private void Update()

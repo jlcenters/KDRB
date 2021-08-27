@@ -12,6 +12,8 @@ public class UI : MonoBehaviour
     public Image spFill;
     public TextMeshProUGUI wallet;
     public Player player;
+    public int amountToDefeat;
+    public int amountDefeated;
 
     private void Awake()
     {

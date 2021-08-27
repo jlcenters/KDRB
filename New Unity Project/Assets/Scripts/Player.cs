@@ -144,4 +144,10 @@ public class Player : Fighter
         wallet += value;
         ui.AdjustWallet();
     }
+
+    public void WinLvl()
+    {
+        Debug.Log("you win!");
+        ui.StartGame();
+    }
 }

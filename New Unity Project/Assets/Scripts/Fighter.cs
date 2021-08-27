@@ -110,6 +110,7 @@ public class Fighter : MonoBehaviour
         if(sprite != null)
         {
             Destroy(gameObject);
+            ui.amountDefeated += 1;
         }
         else
         {
