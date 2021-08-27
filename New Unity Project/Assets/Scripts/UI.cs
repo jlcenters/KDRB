@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UI : MonoBehaviour
 {
 
     public Image hpFill;
     public Image spFill;
+    public TextMeshProUGUI wallet;
     public Player player;
 
     private void Awake()
@@ -40,5 +42,10 @@ public class UI : MonoBehaviour
     public void AdjustHP()
     {
         hpFill.fillAmount = (float)player.hp / (float)player.maxHp;
+    }
+
+    public void AdjustWallet()
+    {
+        wallet.text = player.wallet.ToString();
     }
 }

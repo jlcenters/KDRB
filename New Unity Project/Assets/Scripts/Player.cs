@@ -27,6 +27,7 @@ public class Player : Fighter
     private void Start()
     {
         ui.AdjustHP();
+        ui.AdjustWallet();
     }
 
     //handles input for physics
@@ -141,5 +142,6 @@ public class Player : Fighter
     public void GetPaid(int value)
     {
         wallet += value;
+        ui.AdjustWallet();
     }
 }

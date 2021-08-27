@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
+    public Transform player;
     public Vector3 offset;
+
+    private void Awake()
+    {
+        player = FindObjectOfType<Player>().transform;
+    }
 
     void Update()
     {
-        transform.position = target.position + offset;
+        transform.position = player.position + offset;
     }
 }
