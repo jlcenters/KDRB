@@ -7,26 +7,34 @@ using UnityEngine.SceneManagement;
 public class Fighter : MonoBehaviour
 {
     [Header("Character Stats")]
+    //both
     public int hp;
     public int maxHp;
-    public int speed;
     public int dmg;
     public Rigidbody2D rb;
     public Animator anim;
-    public bool isGrounded;
-    public bool isBlocking;
     public float x;
     public Vector2 face;
     public float atkRange;
     public float atkRate;
     public float lastAtk;
-    //public GameObject projectile;
-    //public Transform shotPoint;
-    public SpriteRenderer sprite;
     public UI ui;
-
+    public SpriteRenderer sprite;
     [Header("If scale is updated, make changes here")]
     public float scaleUp;
+
+    //enemy
+    public int speed;
+
+    //player
+    public bool isGrounded;
+    public bool isStopped;
+    public bool isBlocking;
+   
+    //public GameObject projectile;
+    //public Transform shotPoint;
+
+
 
     public void Miss()
     {
@@ -35,6 +43,7 @@ public class Fighter : MonoBehaviour
 
     public void MeleeAttack(int targetLayer, int dmg)
     {
+        isStopped = true;
         anim.SetBool("isMelee", true);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, face, atkRange, 1 << targetLayer);
         if (hit.collider != null)
@@ -54,6 +63,7 @@ public class Fighter : MonoBehaviour
     public void StopMelee()
     {
         anim.SetBool("isMelee", false);
+        isStopped = false;
     }
 
     /*public void RangedAttack()
@@ -73,6 +83,7 @@ public class Fighter : MonoBehaviour
         }
         if(hp <= 0)
         {
+            Debug.Log("invoking ko method...");
             Die();
         }
     }
@@ -114,12 +125,15 @@ public class Fighter : MonoBehaviour
         }
         else
         {
+            Debug.Log("ko");
             anim.SetBool("isKO", true);
         }
     }
 
     public void GameOver()
     {
+        Debug.Log("to ko screen");
+        ui.currentScene = 0;
         SceneManager.LoadScene("GameOver");
     }
 }

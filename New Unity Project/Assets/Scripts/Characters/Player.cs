@@ -11,7 +11,6 @@ public class Player : Fighter
     public KeyCode jumpKey;
     public KeyCode blockKey;
     public float jumpForce;
-    public bool isStopped;
     public int wallet;
     public int walkSpeed;
     public int runSpeed;
@@ -106,11 +105,11 @@ public class Player : Fighter
             isStopped = true;
             MeleeAttack(8, dmg);
         }
-        if (Input.GetKeyUp(atkKey))
+        /*if (Input.GetKeyUp(atkKey))
         {
             anim.SetBool("isMelee", false);
             isStopped = false;
-        }
+        }*/
 
     }
 
@@ -148,6 +147,6 @@ public class Player : Fighter
     public void WinLvl()
     {
         Debug.Log("you win!");
-        ui.StartGame();
+        ui.NextLevel();
     }
 }

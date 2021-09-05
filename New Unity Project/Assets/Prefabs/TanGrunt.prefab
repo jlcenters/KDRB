@@ -50,33 +50,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 20
   maxHp: 0
-  speed: 2
   dmg: 3
   rb: {fileID: 0}
   anim: {fileID: 0}
-  isGrounded: 0
-  isBlocking: 0
   x: 0
   face: {x: 0, y: 0}
   atkRange: 1
   atkRate: 1.5
   lastAtk: 0
-  sprite: {fileID: 0}
   ui: {fileID: 0}
+  sprite: {fileID: 0}
   scaleUp: 2.25
+  speed: 2
+  isGrounded: 0
+  isStopped: 0
+  isBlocking: 0
   player: {fileID: 0}
   chaseRange: 6
   playerDist: 0
   isTan: 1
   atkCount: 0
-  numToHeavy: 2
+  numToHeavy: 1
   heavyDmg: 6
   isRed: 0
   hpBar: {fileID: 0}
   blueDie: 0
   blueWin: 0
   tanDie: 6
-  tanWin: 6
+  tanWin: 3
+  firstAtk: 0
 --- !u!212 &3408603761993678655
 SpriteRenderer:
   m_ObjectHideFlags: 0

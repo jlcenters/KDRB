@@ -14,6 +14,7 @@ public class UI : MonoBehaviour
     public Player player;
     public int amountToDefeat;
     public int amountDefeated;
+    public int currentScene;
 
     private void Awake()
     {
@@ -22,6 +23,15 @@ public class UI : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+        currentScene = 1;
+        Debug.Log(currentScene);
+    }
+
+    public void NextLevel()
+    {
+        currentScene += 1;
+        SceneManager.LoadScene(currentScene);
+        Debug.Log(currentScene);
     }
 
     public void QuitGame()
